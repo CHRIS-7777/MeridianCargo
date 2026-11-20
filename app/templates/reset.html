@@ -1,0 +1,13 @@
+{{define "content"}}
+<div class="authbox">
+  <h2>Enter your PIN</h2>
+  {{if .Masked}}<div class="alert alert-info">A 4-digit PIN was sent to {{.Masked}}. It is valid for 30 minutes.</div>{{end}}
+  {{if .Error}}<div class="alert alert-danger">{{.Error}}</div>{{end}}
+  <form method="post" action="/forgot/verify">
+    <input type="hidden" name="username" value="{{.Username}}">
+    <div class="form-group"><label>PIN</label><input type="text" name="pin" class="form-control" maxlength="4" inputmode="numeric" required></div>
+    <div class="form-group"><label>New password</label><input type="password" name="new_password" class="form-control" required></div>
+    <button class="btn btn-primary btn-block" type="submit">Reset password</button>
+  </form>
+</div>
+{{end}}

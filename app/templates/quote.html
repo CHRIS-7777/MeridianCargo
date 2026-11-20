@@ -1,0 +1,21 @@
+{{define "content"}}
+<h2>Instant quote &amp; booking</h2>
+<form method="post" action="/quote/book" id="quote-form">
+  <div class="row">
+    <div class="col-sm-6 form-group"><label>Origin port</label>
+      <select name="origin" id="q-origin" class="form-control">{{range .Ports}}<option value="{{.Code}}">{{.Name}} ({{.Code}})</option>{{end}}</select></div>
+    <div class="col-sm-6 form-group"><label>Destination port</label>
+      <select name="dest" id="q-dest" class="form-control">{{range .Ports}}<option value="{{.Code}}">{{.Name}} ({{.Code}})</option>{{end}}</select></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 form-group"><label>Mode</label>
+      <select name="mode" id="q-mode" class="form-control"><option>Sea</option><option>Air</option><option>Road</option></select></div>
+    <div class="col-sm-6 form-group"><label>Gross weight (kg)</label>
+      <input type="number" name="weight" id="q-weight" class="form-control" min="1" value="1000"></div>
+  </div>
+  <div class="form-group"><label>Delivery instructions</label><textarea name="instructions" class="form-control" rows="2"></textarea></div>
+  <input type="hidden" name="rate_cents" id="q-rate" value="0">
+  <div class="well quote-total">Estimated charge: <strong>USD <span id="q-total">0.00</span></strong></div>
+  <button class="btn btn-primary" type="submit">Confirm booking</button>
+</form>
+{{end}}

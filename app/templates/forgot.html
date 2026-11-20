@@ -1,0 +1,12 @@
+{{define "content"}}
+<div class="authbox">
+  <h2>Forgot your password?</h2>
+  <p class="muted">Enter your username and we will e-mail a 4-digit PIN to your registered address.</p>
+  {{if .Error}}<div class="alert alert-danger">{{.Error}}</div>{{end}}
+  <form method="post" action="/forgot">
+    <div class="form-group"><label>Username</label><input type="text" name="username" class="form-control" required></div>
+    <button class="btn btn-primary btn-block" type="submit">Send PIN</button>
+  </form>
+  <p class="top-gap"><a href="/login">Back to sign in</a></p>
+</div>
+{{end}}

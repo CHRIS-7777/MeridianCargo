@@ -1,0 +1,37 @@
+services:
+  db:
+    image: mariadb:10.11
+    container_name: meridian-db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: "r00t-Mrdn-9d41c7e2"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    networks: [meridian]
+
+  web:
+    build: .
+    container_name: meridian-web
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_USER: mc_app
+      DB_PASS: "Mc4pp_Db_2024x"
+      DB_NAME: meridian
+      MC_JWT_SECRET: "k7Qz-mrdn-jwt-5b81e0c9f2a64d37"
+    ports:
+      - "8090:8080"
+    sysctls:
+      net.ipv4.ping_group_range: "0 2147483647"
+    networks: [meridian]
+
+networks:
+  meridian:

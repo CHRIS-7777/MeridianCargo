@@ -1,0 +1,6 @@
+PACKING LIST - Dye batch 7 (Acme Textiles)
+Pallet 1: 24 x 25 kg reactive blue drums
+Pallet 2: 24 x 25 kg reactive red drums
+Pallet 3: 20 x 25 kg dispersant, 4 x 25 kg fixative
+Total net: 1,700 kg   Total gross: 1,846 kg
+Handling: keep dry, max stack 2 high

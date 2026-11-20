@@ -1,0 +1,15 @@
+{{define "content"}}
+<section class="hero">
+  <h1>Freight you can follow, from dock to door.</h1>
+  <p class="lead">Sea, air and road forwarding across 140 ports. Book, track and settle in one place.</p>
+  <form class="trackbox" action="/track" method="get">
+    <input type="text" name="ref" class="form-control input-lg" placeholder="Shipment reference, e.g. MC-2024-10001" required>
+    <button class="btn btn-primary btn-lg" type="submit">Track</button>
+  </form>
+</section>
+<div class="row cards">
+  <div class="col-md-4"><div class="card"><h3>Port directory</h3><p>Look up terminals, customs windows and free-time rules before you ship.</p><a href="/ports">Browse ports &rarr;</a></div></div>
+  <div class="col-md-4"><div class="card"><h3>Instant quotes</h3><p>Customers get lane pricing in seconds and can book without waiting for a callback.</p><a href="/login">Sign in to quote &rarr;</a></div></div>
+  <div class="col-md-4"><div class="card"><h3>New to Meridian?</h3><p>Create a free portal account for your company to manage documents and invoices.</p><a href="/register">Create account &rarr;</a></div></div>
+</div>
+{{end}}

@@ -1,0 +1,17 @@
+{{define "content"}}
+{{with .V}}
+<h2>Invoice {{.No}}</h2>
+<div class="panel panel-default"><div class="panel-body">
+  <div class="row">
+    <div class="col-sm-4"><div class="k">Billed to</div><div class="v">{{.Company}}<br><small>{{.Billed}}</small></div></div>
+    <div class="col-sm-4"><div class="k">Shipment</div><div class="v">{{.Ship}}</div></div>
+    <div class="col-sm-4"><div class="k">Status</div><div class="v">{{.Status}}</div></div>
+  </div>
+  <div class="row top-gap">
+    <div class="col-sm-4"><div class="k">Due date</div><div class="v">{{.Due}}</div></div>
+    <div class="col-sm-4"><div class="k">Amount</div><div class="v">{{.Currency}} {{money .Amount}}</div></div>
+  </div>
+</div></div>
+{{end}}
+<p><a href="/account/invoices">&larr; Back to invoices</a></p>
+{{end}}

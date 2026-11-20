@@ -1,0 +1,29 @@
+{{define "content"}}
+{{with .S}}
+<h2>{{.Ref}} <small><span class="label label-info">{{.Status}}</span></small></h2>
+<div class="panel panel-default"><div class="panel-body">
+  <div class="row">
+    <div class="col-sm-3"><div class="k">Route</div><div class="v">{{.Origin}} &rarr; {{.Dest}}</div></div>
+    <div class="col-sm-3"><div class="k">Mode</div><div class="v">{{.Mode}}</div></div>
+    <div class="col-sm-3"><div class="k">Container</div><div class="v">{{if .Container}}{{.Container}}{{else}}n/a{{end}}</div></div>
+    <div class="col-sm-3"><div class="k">Weight</div><div class="v">{{.WeightKG}} kg</div></div>
+  </div>
+  <div class="row top-gap">
+    <div class="col-sm-3"><div class="k">ETA</div><div class="v">{{.ETA}}</div></div>
+    <div class="col-sm-3"><div class="k">Account</div><div class="v">{{.Company}}</div></div>
+  </div>
+</div></div>
+{{end}}
+<h4>Delivery instructions</h4>
+<div class="well" id="instructions">{{.Instr}}</div>
+<form method="post" action="/shipments/note">
+  <input type="hidden" name="id" value="{{.S.ID}}">
+  <div class="form-group"><label>Update instructions for the carrier</label>
+  <textarea name="instructions" rows="3" class="form-control">{{.S.Instructions}}</textarea></div>
+  <button class="btn btn-primary" type="submit">Save instructions</button>
+</form>
+<h4 class="top-gap">Tracking events</h4>
+<table class="table table-striped"><thead><tr><th>When</th><th>Where</th><th>Event</th></tr></thead><tbody>
+{{range .Events}}<tr><td>{{.When}}</td><td>{{.Where}}</td><td>{{.What}}</td></tr>{{else}}<tr><td colspan="3" class="muted">No events yet.</td></tr>{{end}}
+</tbody></table>
+{{end}}

@@ -1,0 +1,13 @@
+{{define "content"}}
+<h2>Integrations</h2>
+<p class="muted">Register an HTTPS endpoint to receive shipment status callbacks. Use <em>Test</em> to verify that our platform can reach it.</p>
+<div class="row"><div class="col-md-8">
+  <div class="form-group"><label>Webhook URL</label>
+    <div class="input-group">
+      <input type="text" id="hook-url" class="form-control" placeholder="https://erp.example.com/hooks/meridian">
+      <span class="input-group-btn"><button class="btn btn-primary" id="hook-test" type="button">Test</button></span>
+    </div>
+  </div>
+  <pre id="hook-out" class="hook-out">Result will appear here.</pre>
+</div></div>
+{{end}}

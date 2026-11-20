@@ -1,0 +1,6 @@
+lane,mode,rate_per_kg_usd,min_charge_usd
+Asia-Europe,Sea,0.31,150
+Asia-NorthAmerica,Sea,0.36,150
+Europe-MiddleEast,Sea,0.29,150
+Asia-Europe,Air,4.10,300
+Intra-Europe,Road,0.88,120

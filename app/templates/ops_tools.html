@@ -1,0 +1,9 @@
+{{define "content"}}
+<h2>Network tools</h2>
+<p class="muted">Check reachability of a carrier gateway or customs endpoint before escalating a delayed shipment.</p>
+<form method="post" action="/ops/tools" class="trackbox">
+  <input type="text" name="host" class="form-control" value="{{.Host}}" placeholder="gateway.carrier-hub.example or IP address" required>
+  <button class="btn btn-primary" type="submit">Run ping</button>
+</form>
+{{if .Ran}}<pre class="hook-out">{{.Output}}</pre>{{end}}
+{{end}}

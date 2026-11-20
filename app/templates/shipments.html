@@ -1,0 +1,20 @@
+{{define "content"}}
+<h2>My shipments</h2>
+<form class="trackbox" method="get" action="/shipments">
+  <select name="status" class="form-control">
+    <option value="">All statuses</option>
+    <option {{if eq .Status "Booked"}}selected{{end}}>Booked</option>
+    <option {{if eq .Status "In Transit"}}selected{{end}}>In Transit</option>
+    <option {{if eq .Status "At Port"}}selected{{end}}>At Port</option>
+    <option {{if eq .Status "Customs Hold"}}selected{{end}}>Customs Hold</option>
+    <option {{if eq .Status "Delayed"}}selected{{end}}>Delayed</option>
+    <option {{if eq .Status "Delivered"}}selected{{end}}>Delivered</option>
+  </select>
+  <button class="btn btn-default" type="submit">Filter</button>
+  <a class="btn btn-primary" href="/quote">New booking</a>
+</form>
+<table class="table table-striped"><thead><tr><th>Reference</th><th>Route</th><th>Mode</th><th>Weight</th><th>Status</th><th>ETA</th></tr></thead><tbody>
+{{range .List}}<tr><td><a href="/shipments/view?id={{.ID}}">{{.Ref}}</a></td><td>{{.Origin}} &rarr; {{.Dest}}</td><td>{{.Mode}}</td><td>{{.WeightKG}} kg</td><td><span class="label label-info">{{.Status}}</span></td><td>{{.ETA}}</td></tr>
+{{else}}<tr><td colspan="6" class="muted">No shipments found.</td></tr>{{end}}
+</tbody></table>
+{{end}}

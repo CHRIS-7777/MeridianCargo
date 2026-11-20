@@ -1,0 +1,7 @@
+{{define "content"}}
+<h2>Invoices</h2>
+<table class="table table-striped"><thead><tr><th>Invoice</th><th>Status</th><th>Due</th><th class="text-right">Amount</th></tr></thead><tbody>
+{{range .List}}<tr><td><a href="/account/invoices/view?id={{.ID}}">{{.No}}</a></td><td><span class="label {{if eq .Status "Paid"}}label-success{{else}}label-warning{{end}}">{{.Status}}</span></td><td>{{.Due}}</td><td class="text-right">{{.Currency}} {{money .Amount}}</td></tr>
+{{else}}<tr><td colspan="4" class="muted">No invoices yet.</td></tr>{{end}}
+</tbody></table>
+{{end}}

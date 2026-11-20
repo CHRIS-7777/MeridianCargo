@@ -1,0 +1,52 @@
+{{define "layout"}}<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{.Title}} | Meridian Cargo</title>
+<link rel="stylesheet" href="/static/vendor/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/portal.css">
+</head>
+<body data-page="{{.Page}}">
+<header class="topbar">
+  <div class="container">
+    <a class="brand" href="/"><span class="brand-mark">M</span> Meridian<span class="brand-sub">Cargo</span></a>
+    <nav class="mainnav">
+      <a href="/track">Track</a>
+      <a href="/ports">Ports</a>
+      <a href="/help">Help</a>
+      {{if .Auth}}
+        {{if .Auth.IsStaff}}<a href="/ops">Operations</a><a href="/ops/tools">Tools</a><a href="/ops/logs">Logs</a>{{end}}
+        {{if .Auth.IsAdmin}}<a href="/admin/users">Admin</a>{{end}}
+        {{if not .Auth.IsStaff}}
+        <a href="/dashboard">Dashboard</a>
+        <a href="/shipments">Shipments</a>
+        <a href="/quote">Quote</a>
+        <a href="/documents">Documents</a>
+        <a href="/account/invoices">Invoices</a>
+        <a href="/integrations">Integrations</a>
+        {{end}}
+        <a href="/account" class="who">{{.Auth.Username}}</a>
+        <a href="/logout" class="signout">Sign out</a>
+      {{else}}
+        <a href="/login" class="signin">Sign in</a>
+      {{end}}
+    </nav>
+  </div>
+</header>
+<main class="container page">
+{{template "content" .}}
+</main>
+<footer class="foot">
+  <div class="container">
+    <span>&copy; 2024 Meridian Cargo Ltd. All rights reserved.</span>
+    <span class="muted">Customer portal build 2024.11.3</span>
+  </div>
+</footer>
+<script src="/static/vendor/jquery.min.js"></script>
+<script src="/static/vendor/lodash.min.js"></script>
+<script src="/static/vendor/bootstrap.min.js"></script>
+<script src="/static/js/portal.js"></script>
+</body>
+</html>
+{{end}}

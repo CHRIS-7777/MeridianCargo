@@ -1,0 +1,25 @@
+{{define "content"}}
+<h2>Track a shipment</h2>
+<form class="trackbox" action="/track" method="get">
+  <input type="text" name="ref" class="form-control" value="{{.Ref}}" placeholder="MC-2024-10001">
+  <button class="btn btn-primary" type="submit">Track</button>
+</form>
+{{if .NotFound}}<div class="alert alert-warning">No shipment found for reference <strong>{{.Ref}}</strong>.</div>{{end}}
+{{if .Found}}
+{{with .S}}
+<div class="panel panel-default"><div class="panel-body">
+  <div class="row">
+    <div class="col-sm-3"><div class="k">Reference</div><div class="v">{{.Ref}}</div></div>
+    <div class="col-sm-3"><div class="k">Route</div><div class="v">{{.Origin}} &rarr; {{.Dest}}</div></div>
+    <div class="col-sm-3"><div class="k">Mode</div><div class="v">{{.Mode}}</div></div>
+    <div class="col-sm-3"><div class="k">Status</div><div class="v"><span class="label label-info">{{.Status}}</span></div></div>
+  </div>
+  <div class="row top-gap"><div class="col-sm-3"><div class="k">ETA</div><div class="v">{{.ETA}}</div></div></div>
+</div></div>
+{{end}}
+<h4>Events</h4>
+<table class="table table-striped"><thead><tr><th>When</th><th>Where</th><th>Event</th></tr></thead><tbody>
+{{range .Events}}<tr><td>{{.When}}</td><td>{{.Where}}</td><td>{{.What}}</td></tr>{{else}}<tr><td colspan="3" class="muted">No events recorded yet.</td></tr>{{end}}
+</tbody></table>
+{{end}}
+{{end}}

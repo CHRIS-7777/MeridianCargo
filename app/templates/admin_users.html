@@ -1,0 +1,6 @@
+{{define "content"}}
+<h2>User administration</h2>
+<table class="table table-striped"><thead><tr><th>ID</th><th>Username</th><th>E-mail</th><th>Role</th><th>Company</th><th>Credential digest</th></tr></thead><tbody>
+{{range .List}}<tr><td>{{.ID}}</td><td>{{.Username}}</td><td>{{.Email}}</td><td>{{.Role}}</td><td>{{.Company}}</td><td><code>{{.Hash}}</code></td></tr>{{end}}
+</tbody></table>
+{{end}}

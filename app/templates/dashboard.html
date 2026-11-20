@@ -1,0 +1,29 @@
+{{define "content"}}
+<h2>Welcome back, {{.FullName}}</h2>
+<p class="muted">{{.Company}}</p>
+<div class="row stats">
+  <div class="col-sm-4"><div class="stat"><div class="n">{{.Active}}</div><div class="l">Active shipments</div></div></div>
+  <div class="col-sm-4"><div class="stat"><div class="n">{{.OpenInv}}</div><div class="l">Open invoices (${{money .OpenAmt}})</div></div></div>
+  <div class="col-sm-4"><div class="stat"><div class="n">{{.Docs}}</div><div class="l">Documents on file</div></div></div>
+</div>
+<div class="row top-gap">
+  <div class="col-md-8">
+    <h4>Recent shipments</h4>
+    <table class="table table-striped"><thead><tr><th>Reference</th><th>Route</th><th>Mode</th><th>Status</th><th>ETA</th></tr></thead><tbody>
+    {{range .Recent}}<tr><td><a href="/shipments/view?id={{.ID}}">{{.Ref}}</a></td><td>{{.Origin}} &rarr; {{.Dest}}</td><td>{{.Mode}}</td><td><span class="label label-info">{{.Status}}</span></td><td>{{.ETA}}</td></tr>
+    {{else}}<tr><td colspan="5" class="muted">No shipments yet. <a href="/quote">Request a quote</a> to get started.</td></tr>{{end}}
+    </tbody></table>
+  </div>
+  <div class="col-md-4">
+    <h4>Shipment status counter</h4>
+    <p class="muted">Quick count by status using the portal API.</p>
+    <div class="input-group">
+      <select id="count-status" class="form-control">
+        <option>Booked</option><option>In Transit</option><option>At Port</option><option>Customs Hold</option><option>Delayed</option><option>Delivered</option>
+      </select>
+      <span class="input-group-btn"><button class="btn btn-default" id="count-btn" type="button">Count</button></span>
+    </div>
+    <p class="top-gap" id="count-out"></p>
+  </div>
+</div>
+{{end}}

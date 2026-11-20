@@ -1,0 +1,8 @@
+BILL OF LADING  -  MC-2024-10001
+Shipper:     Acme Textiles, Chennai, India
+Consignee:   Vondel Fashion BV, Rotterdam, Netherlands
+Vessel:      MV Aurora Bay  /  Voyage 442E
+Container:   MSKU4839201  (40' HC)   Seal: IN-882104
+Description: 1,420 cartons cotton knit garments
+Gross wt:    18,200 kg
+Freight:     PREPAID

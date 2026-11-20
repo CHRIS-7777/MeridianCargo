@@ -1,0 +1,9 @@
+{{define "content"}}
+<h2>Help centre</h2>
+<form class="trackbox" action="/help" method="get">
+  <input type="text" name="q" class="form-control" value="{{.Q}}" placeholder="Search articles">
+  <button class="btn btn-primary" type="submit">Search</button>
+</form>
+{{if .NoneMsg}}<div class="alert alert-info">{{.NoneMsg}}</div>{{end}}
+{{range .Results}}<div class="panel panel-default"><div class="panel-heading"><strong>{{.Title}}</strong></div><div class="panel-body">{{.Body}}</div></div>{{end}}
+{{end}}

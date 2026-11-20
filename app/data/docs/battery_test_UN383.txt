@@ -1,0 +1,4 @@
+UN 38.3 TEST SUMMARY
+Product: BW-Buds Pro charging case, Li-ion 3.7V 520mAh
+Tests T1-T8 passed. Lab: KTR Seoul. Report ref: KTR-2024-0871.
+Classification: UN3481, Class 9, packing instruction 967.

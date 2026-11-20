@@ -1,0 +1,14 @@
+{{define "content"}}
+<h2>Port directory</h2>
+<p class="muted">Search 25 major terminals by name, UN/LOCODE or country.</p>
+<form class="trackbox" action="/ports" method="get">
+  <input type="text" name="q" class="form-control" value="{{.Q}}" placeholder="e.g. Rotterdam, SGSIN, India">
+  <button class="btn btn-primary" type="submit">Search</button>
+</form>
+{{if .Failed}}<div class="alert alert-danger">The directory is temporarily unavailable. Please try again later.</div>{{else}}
+<table class="table table-striped"><thead><tr><th>Code</th><th>Port</th><th>Country</th><th>Region</th><th>Operational notes</th></tr></thead><tbody>
+{{range .Rows}}<tr><td><code>{{index . 0}}</code></td><td>{{index . 1}}</td><td>{{index . 2}}</td><td>{{index . 3}}</td><td>{{index . 4}}</td></tr>
+{{else}}<tr><td colspan="5" class="muted">No ports match your search.</td></tr>{{end}}
+</tbody></table>
+{{end}}
+{{end}}

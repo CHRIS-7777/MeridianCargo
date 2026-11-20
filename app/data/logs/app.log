@@ -1,0 +1,7 @@
+2024/11/02 07:41:12 startup db connected dsn=mc_app@tcp(db:3306)/meridian
+2024/11/02 07:41:12 listening on :8080
+2024/11/02 08:03:55 auth login user=erin password=erin2024 result=ok ip=10.20.4.17:51322
+2024/11/02 08:21:09 auth login user=bob password=bobby12 result=fail ip=10.20.9.4:40114
+2024/11/02 08:21:31 auth login user=bob password=bobby123 result=ok ip=10.20.9.4:40118
+2024/11/02 09:14:48 auth reset-pin issued user=dmitri pin=5127 email=dmitri.k@globex-marine.example
+2024/11/02 09:15:30 auth password-reset user=dmitri new_password=iloveships

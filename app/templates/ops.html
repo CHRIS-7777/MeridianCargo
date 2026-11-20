@@ -1,0 +1,12 @@
+{{define "content"}}
+<h2>Operations console</h2>
+<div class="row stats">
+  <div class="col-sm-4"><div class="stat"><div class="n">{{.Total}}</div><div class="l">Shipments in system</div></div></div>
+  <div class="col-sm-4"><div class="stat"><div class="n">{{.Hold}}</div><div class="l">Customs holds</div></div></div>
+  <div class="col-sm-4"><div class="stat"><div class="n">{{.Late}}</div><div class="l">Delayed</div></div></div>
+</div>
+<h4 class="top-gap">Dispatch queue</h4>
+<table class="table table-striped"><thead><tr><th>Ref</th><th>Account</th><th>Route</th><th>Status</th><th>Delivery instructions</th></tr></thead><tbody>
+{{range .Rows}}<tr><td><a href="/shipments/view?id={{.S.ID}}">{{.S.Ref}}</a></td><td>{{.S.Company}}</td><td>{{.S.Origin}} &rarr; {{.S.Dest}}</td><td><span class="label label-info">{{.S.Status}}</span></td><td>{{.Instr}}</td></tr>{{end}}
+</tbody></table>
+{{end}}
